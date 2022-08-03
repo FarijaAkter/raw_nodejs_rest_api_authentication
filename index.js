@@ -28,7 +28,8 @@ app.handleReqRes = (req, res) => {
     //Get the url and parse it
     const parsedUrl = url.parse(req.url, true)
     const path = parsedUrl.pathname;
-    const trimmedPath = path.replace(/^\/+|\/+$/g, '')
+    const trimmedPath = path.replace(/^\/+|\/+$/g, '');
+    const method = req.method.toLowerCase();
     console.log(trimmedPath);
     //Response handle
     res.end("Hello World");
