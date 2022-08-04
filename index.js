@@ -7,6 +7,7 @@ Date:03/08/2022
 //dependencies
 const http = require("http")
 const url = require('url')
+const { StringDecoder } = require('string_decoder')
 
 //App object module scaffolding 
 const app = {};
@@ -33,11 +34,25 @@ app.handleReqRes = (req, res) => {
     const queryStringObject = parsedUrl.query;
     const headersObject = req.headers;
 
-    console.log(queryStringObject)
-    console.log(trimmedPath);
-    console.log(headersObject);
-    //Response handle
-    res.end("Hello World");
+    const decoder = new StringDecoder('utf-8');
+    let realData = '';
+
+    req.on('data', (buffer) => {
+        realData += decoder.write(buffer);
+    });
+
+    req.on('end', () => {
+        realData += decoder.end();
+        console.log(realData)
+        //Response handle
+        res.end("Hello World");
+    })
+
+
+    // console.log(queryStringObject)
+    // console.log(trimmedPath);
+    // console.log(headersObject);
+
 }
 
 //Start the server 
