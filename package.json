@@ -17,8 +17,5 @@
     "url": "https://github.com/FarijaAkter/raw_nodejs_rest_api_authentication/issues"
   },
   "homepage": "https://github.com/FarijaAkter/raw_nodejs_rest_api_authentication#readme",
-  "description": "",
-  "dependencies": {
-    "string_decoder": "^1.3.0"
-  }
+  "description": ""
 }
